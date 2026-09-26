@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> CAFE_Z | منوی دیجیتال</title>
+<title>کافه من | منوی دیجیتال</title>
 
 <style>
 :root{
@@ -17,9 +17,7 @@
   --shadow:0 10px 30px #4b2d1812
 }
 
-*{
-  box-sizing:border-box
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -302,7 +300,6 @@ button{
 }
 
 @media(max-width:600px){
-
   .top{
     align-items:flex-start
   }
@@ -351,33 +348,20 @@ button{
 
 <header>
   <div class="top">
-
     <div>
-      <div class="brand">☕ کافه من</div>
-      <div class="sub" id="tableLabel">
-        منوی دیجیتال کافه
-      </div>
+      <div class="brand">☕ Z_CAFE</div>
+      <div class="sub" id="tableLabel">Z _منوی دیجیتال کافه</div>
     </div>
 
-    <button class="scan" onclick="openScanner()">
-      📷 اسکن QR
-    </button>
-
+    <button class="scan" onclick="openScanner()">📷 اسکن QR</button>
   </div>
 </header>
-
 
 <main class="container">
 
   <section class="hero">
-
-    <h1>
-      به کافه ما خوش آمدید
-    </h1>
-
-    <p>
-      دسته‌بندی موردنظر را انتخاب کنید و محصولات را به سفارش خود اضافه کنید.
-    </p>
+    <h1>به «زدکافی» خوش آمدید</h1>
+    <p>دسته‌بندی موردنظر را انتخاب کنید و محصولات را به سفارش خود اضافه کنید.</p>
 
     <input
       id="search"
@@ -385,79 +369,52 @@ button{
       placeholder="🔎 جستجوی نوشیدنی، غذا، دسر..."
       oninput="render()"
     >
-
   </section>
 
-  <nav
-    class="categories"
-    id="categories">
-  </nav>
+  <nav class="categories" id="categories"></nav>
 
-  <section
-    class="grid"
-    id="menu">
-  </section>
+  <section class="grid" id="menu"></section>
 
 </main>
 
-
 <section class="order">
-
   <div class="orderbox">
 
-    <h2>
-      🛒 سفارش شما
-    </h2>
+    <h2>🛒 سفارش شما</h2>
 
     <div id="cartItems">
-      <div class="empty">
-        هنوز محصولی انتخاب نشده است.
-      </div>
+      <div class="empty">هنوز محصولی انتخاب نشده است.</div>
     </div>
 
     <div id="total"></div>
 
-    <button
-      class="checkout"
-      onclick="submitOrder()">
+    <button class="checkout" onclick="submitOrder()">
       ثبت سفارش
     </button>
 
   </div>
-
 </section>
-
 
 <button
   id="cartButton"
   class="cart"
-  onclick="document.querySelector('.order').scrollIntoView({behavior:'smooth'})">
-
+  onclick="document.querySelector('.order').scrollIntoView({behavior:'smooth'})"
+>
   🛒 سبد سفارش
   <strong id="cartCount">0</strong>
-
 </button>
 
-
-<div
-  class="modal"
-  id="scannerModal">
+<div class="modal" id="scannerModal">
 
   <div class="modalbox">
 
-    <h2>
-      اسکن QR / بارکد
-    </h2>
+    <h2>اسکن QR / بارکد</h2>
 
-    <p>
-      دوربین را مقابل QR کافه یا QR میز قرار دهید.
-    </p>
+    <p>دوربین را مقابل QR کافه یا QR میز قرار دهید.</p>
 
     <div id="reader"></div>
 
-    <button
-      class="close"
-      onclick="closeScanner()">
+    <button class="close" onclick="closeScanner()">
       بستن
     </button>
 
@@ -465,262 +422,232 @@ button{
 
 </div>
 
-
 <script
   src="https://unpkg.com/html5-qrcode"
   type="text/javascript">
 </script>
 
-
 <script>
-
-/* =========================
-   لیست محصولات
-   ========================= */
 
 const menu = [
 
+  /* قهوه گرم */
   {
     id:1,
     cat:"قهوه گرم",
-    name:"اسپرسو پنجاه",
-    desc:"اسپرسو",
-    price:165000,
+    name:"اسپرسو",
+    desc:"اسپرسوی تازه با دانه‌های منتخب",
+    price:70000,
     icon:"☕"
   },
 
   {
     id:2,
     cat:"قهوه گرم",
-    name:"اسپرسو صد",
-    desc:"اسپرسو",
-    price:198000,
+    name:"آمریکانو",
+    desc:"اسپرسو همراه آب داغ",
+    price:90000,
     icon:"☕"
   },
 
   {
     id:3,
-    cat:"قهوه سرد",
-    name:"ایس امریکن پنجاه",
-    desc:"آیس آمریکانو",
-    price:165000,
-    icon:"🧊"
+    cat:"قهوه گرم",
+    name:"کاپوچینو",
+    desc:"اسپرسو، شیر بخار داده شده و فوم شیر",
+    price:120000,
+    icon:"☕"
   },
 
   {
     id:4,
-    cat:"قهوه سرد",
-    name:"ایس امریکن صد",
-    desc:"آیس آمریکانو",
-    price:198000,
-    icon:"🧊"
+    cat:"قهوه گرم",
+    name:"لاته",
+    desc:"اسپرسو با شیر گرم و فوم لطیف",
+    price:125000,
+    icon:"🥛"
   },
 
+
+  /* قهوه سرد */
   {
     id:5,
-    cat:"قهوه گرم",
-    name:"لاته پنجاه",
-    desc:"لاته",
-    price:208000,
-    icon:"🥛"
+    cat:"قهوه سرد",
+    name:"آیس لاته",
+    desc:"لاته خنک با یخ",
+    price:135000,
+    icon:"🧊"
   },
 
   {
     id:6,
-    cat:"قهوه گرم",
-    name:"لاته شیر نارگیل پنجاه",
-    desc:"لاته با شیر نارگیل",
-    price:225000,
-    icon:"🥥"
-  },
-
-  {
-    id:7,
-    cat:"قهوه گرم",
-    name:"لاته صد",
-    desc:"لاته",
-    price:238000,
-    icon:"🥛"
-  },
-
-  {
-    id:8,
-    cat:"قهوه گرم",
-    name:"لاته شیر نارگیل صد",
-    desc:"لاته با شیر نارگیل",
-    price:248000,
-    icon:"🥥"
-  },
-
-  {
-    id:9,
-    cat:"قهوه گرم",
-    name:"کاپو صد",
-    desc:"کاپوچینو",
-    price:228000,
-    icon:"☕"
-  },
-
-  {
-    id:10,
-    cat:"قهوه گرم",
-    name:"کاپو پنجاه",
-    desc:"کاپوچینو",
-    price:198000,
-    icon:"☕"
-  },
-
-  {
-    id:11,
-    cat:"قهوه گرم",
-    name:"موکا پنجاه",
-    desc:"موکا",
-    price:228000,
-    icon:"🍫"
-  },
-
-  {
-    id:12,
-    cat:"قهوه گرم",
-    name:"موکا صد",
-    desc:"موکا",
-    price:248000,
-    icon:"🍫"
-  },
-
-  {
-    id:13,
-    cat:"تاپینگ",
-    name:"تاپینک ها",
-    desc:"انواع تاپینگ",
-    price:30000,
-    icon:"🍯"
-  },
-
-  {
-    id:14,
     cat:"قهوه سرد",
-    name:"کلد برو",
-    desc:"قهوه کلد برو",
-    price:258000,
+    name:"آیس آمریکانو",
+    desc:"اسپرسو، آب سرد و یخ",
+    price:110000,
     icon:"🧊"
   },
 
-  {
-    id:15,
-    cat:"نوشیدنی",
-    name:"تونیک پنجاه",
-    desc:"تونیک",
-    price:235000,
-    icon:"🥤"
-  },
 
+  /* نوشیدنی */
   {
-    id:16,
-    cat:"نوشیدنی",
-    name:"تونیک صد",
-    desc:"تونیک",
-    price:258000,
-    icon:"🥤"
-  },
-
-  {
-    id:17,
+    id:7,
     cat:"نوشیدنی",
     name:"لیموناد",
-    desc:"لیموناد",
-    price:188000,
+    desc:"لیموی تازه و نعناع",
+    price:100000,
     icon:"🍋"
   },
 
   {
-    id:18,
+    id:8,
     cat:"نوشیدنی",
     name:"موهیتو",
-    desc:"موهیتو",
-    price:188000,
+    desc:"نعناع، لیمو و نوشیدنی گازدار",
+    price:130000,
     icon:"🍹"
   },
 
+
+  /* چای و دمنوش */
   {
-    id:19,
-    cat:"نوشیدنی گرم",
-    name:"هات چاکلت",
-    desc:"هات چاکلت",
-    price:198000,
+    id:9,
+    cat:"چای و دمنوش",
+    name:"چای سیاه",
+    desc:"چای ایرانی خوش‌عطر",
+    price:60000,
+    icon:"🍵"
+  },
+
+  {
+    id:10,
+    cat:"چای و دمنوش",
+    name:"دمنوش آرامش",
+    desc:"ترکیب گیاهی معطر",
+    price:85000,
+    icon:"🌿"
+  },
+
+
+  /* کیک و دسر */
+  {
+    id:11,
+    cat:"کیک و دسر",
+    name:"چیزکیک",
+    desc:"چیزکیک روز با سس مخصوص",
+    price:150000,
+    icon:"🍰"
+  },
+
+  {
+    id:12,
+    cat:"کیک و دسر",
+    name:"براونی شکلاتی",
+    desc:"براونی شکلاتی با مغز گردو",
+    price:130000,
+    icon:"🍫"
+  },
+
+
+  /* صبحانه */
+  {
+    id:13,
+    cat:"صبحانه",
+    name:"صبحانه کلاسیک",
+    desc:"تخم‌مرغ، پنیر، نان تازه و سبزیجات",
+    price:220000,
+    icon:"🍳"
+  },
+
+
+  /* غذا */
+  {
+    id:14,
+    cat:"غذا",
+    name:"ساندویچ مرغ",
+    desc:"مرغ گریل، سبزیجات و سس مخصوص",
+    price:210000,
+    icon:"🥪"
+  },
+
+
+  /* شیک */
+  {
+    id:15,
+    cat:"شیک",
+    name:"شیک شکلات",
+    desc:"شیک شکلاتی خوش‌طعم و خامه‌ای",
+    price:338000,
     icon:"🍫"
   },
 
   {
-    id:20,
-    cat:"چای و دمنوش",
-    name:"چای کرک",
-    desc:"چای کرک",
-    price:198000,
-    icon:"🍵"
+    id:16,
+    cat:"شیک",
+    name:"شیک نوتلا",
+    desc:"شیک نوتلا با طعم غنی شکلاتی",
+    price:358000,
+    icon:"🍫"
   },
 
   {
-    id:21,
-    cat:"چای و دمنوش",
-    name:"ماسالا",
-    desc:"ماسالا",
-    price:178000,
-    icon:"🍵"
+    id:17,
+    cat:"شیک",
+    name:"شیک بادوم زمینی",
+    desc:"شیک بادوم زمینی خوش‌عطر و خامه‌ای",
+    price:348000,
+    icon:"🥜"
+  },
+
+  {
+    id:18,
+    cat:"شیک",
+    name:"کافی شیک",
+    desc:"ترکیب قهوه و شیک خنک",
+    price:378000,
+    icon:"☕"
+  },
+
+  {
+    id:19,
+    cat:"شیک",
+    name:"شیک وانیل",
+    desc:"شیک وانیلی لطیف و خوش‌عطر",
+    price:298000,
+    icon:"🥛"
   }
 
 ];
 
 
-/* =========================
-   سبد خرید
-   ========================= */
+let activeCat="همه";
+let cart=[];
 
-let activeCat = "همه";
-let cart = [];
-
-
-/* =========================
-   نمایش قیمت
-   ========================= */
 
 function money(n){
-
-  return n.toLocaleString("fa-IR") + " تومان";
-
+  return n.toLocaleString("fa-IR")+" تومان";
 }
 
 
-/* =========================
-   دسته‌بندی‌ها
-   ========================= */
-
 function cats(){
 
-  const list = [
+  const list=[
     "همه",
-    ...new Set(menu.map(x => x.cat))
+    ...new Set(menu.map(x=>x.cat))
   ];
 
   document.getElementById("categories").innerHTML =
-    list.map(c => `
-
+    list.map(c=>`
       <button
-        class="cat ${c === activeCat ? 'active' : ''}"
-        onclick="activeCat='${c}';render()">
-
+        class="cat ${c===activeCat?'active':''}"
+        onclick="activeCat='${c}';render()"
+      >
         ${c}
-
       </button>
-
     `).join("");
 
 }
 
-
-/* =========================
-   نمایش محصولات
-   ========================= */
 
 function render(){
 
@@ -733,131 +660,101 @@ function render(){
       .trim()
       .toLowerCase();
 
-
-  const data = menu.filter(x =>
-
-    (activeCat === "همه" || x.cat === activeCat)
-
-    &&
-
-    (
-      !q ||
-
+  const data =
+    menu.filter(x =>
+      (activeCat==="همه" || x.cat===activeCat) &&
       (
-        x.name +
-        " " +
-        x.desc +
-        " " +
-        x.cat
+        !q ||
+        (x.name+" "+x.desc+" "+x.cat)
+          .toLowerCase()
+          .includes(q)
       )
-      .toLowerCase()
-      .includes(q)
-    )
-
-  );
+    );
 
 
   document.getElementById("menu").innerHTML =
-
     data.length
+    ?
+    data.map(x=>`
 
-      ?
+      <article class="item">
 
-      data.map(x => `
-
-        <article class="item">
-
-          <div class="photo">
-            ${x.icon}
-          </div>
-
-          <div class="info">
-
-            <div class="name">
-              ${x.name}
-            </div>
-
-            <div class="desc">
-              ${x.desc}
-            </div>
-
-            <div class="bottom">
-
-              <span class="price">
-                ${money(x.price)}
-              </span>
-
-              <button
-                class="add"
-                onclick="add(${x.id})">
-
-                افزودن
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-      `).join("")
-
-      :
-
-      `
-        <div class="empty">
-          محصولی پیدا نشد.
+        <div class="photo">
+          ${x.icon}
         </div>
-      `;
+
+        <div class="info">
+
+          <div class="name">
+            ${x.name}
+          </div>
+
+          <div class="desc">
+            ${x.desc}
+          </div>
+
+          <div class="bottom">
+
+            <span class="price">
+              ${money(x.price)}
+            </span>
+
+            <button
+              class="add"
+              onclick="add(${x.id})"
+            >
+              افزودن
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join("")
+
+    :
+
+    `<div class="empty">
+      محصولی پیدا نشد.
+    </div>`;
 
 
   updateCart();
 
 }
 
-
-/* =========================
-   افزودن به سبد
-   ========================= */
 
 function add(id){
 
-  const x = cart.find(a => a.id === id);
+  const x=cart.find(a=>a.id===id);
 
-  if(x){
-
-    x.qty++;
-
-  }else{
-
-    cart.push({
-      id:id,
-      qty:1
-    });
-
-  }
+  x
+    ? x.qty++
+    : cart.push({
+        id,
+        qty:1
+      });
 
   updateCart();
 
 }
 
-
-/* =========================
-   حذف از سبد
-   ========================= */
 
 function remove(id){
 
-  const x = cart.find(a => a.id === id);
+  const x=cart.find(a=>a.id===id);
 
-  if(!x) return;
+  if(!x)return;
 
   x.qty--;
 
-  if(x.qty <= 0){
+  if(x.qty<=0){
 
-    cart = cart.filter(a => a.id !== id);
+    cart=cart.filter(
+      a=>a.id!==id
+    );
 
   }
 
@@ -866,23 +763,16 @@ function remove(id){
 }
 
 
-/* =========================
-   بروزرسانی سبد
-   ========================= */
-
 function updateCart(){
 
-  const box =
+  const box=
     document.getElementById("cartItems");
 
 
   if(!cart.length){
 
-    box.innerHTML = `
-      <div class="empty">
-        هنوز محصولی انتخاب نشده است.
-      </div>
-    `;
+    box.innerHTML=
+      '<div class="empty">هنوز محصولی انتخاب نشده است.</div>';
 
     document
       .getElementById("cartButton")
@@ -891,83 +781,73 @@ function updateCart(){
 
     document
       .getElementById("total")
-      .innerHTML = "";
+      .innerHTML="";
 
     return;
 
   }
 
 
-  let total = 0;
-  let count = 0;
+  let total=0;
+  let count=0;
 
 
-  box.innerHTML = cart.map(c => {
+  box.innerHTML =
+    cart.map(c=>{
 
-    const x =
-      menu.find(a => a.id === c.id);
+      const x=
+        menu.find(a=>a.id===c.id);
 
-    total += x.price * c.qty;
+      total +=
+        x.price*c.qty;
 
-    count += c.qty;
+      count +=
+        c.qty;
 
 
-    return `
+      return `
+        <div class="order-row">
 
-      <div class="order-row">
+          <span>
+            ${x.name} × ${c.qty}
+          </span>
 
-        <span>
-          ${x.name} × ${c.qty}
-        </span>
+          <span>
 
-        <span>
+            ${money(x.price*c.qty)}
 
-          ${money(x.price * c.qty)}
+            <button
+              onclick="remove(${x.id})"
+            >
+              −
+            </button>
 
-          <button
-            onclick="remove(${x.id})">
+          </span>
 
-            −
+        </div>
+      `;
 
-          </button>
+    }).join("");
 
-        </span>
 
+  document.getElementById("total").innerHTML =
+    `
+      <div style="padding-top:14px;font-weight:bold">
+        مبلغ کل: ${money(total)}
       </div>
-
     `;
 
-  }).join("");
+
+  document.getElementById("cartCount")
+    .textContent=count;
 
 
-  document.getElementById("total").innerHTML = `
-
-    <div
-      style="padding-top:14px;font-weight:bold">
-
-      مبلغ کل:
-      ${money(total)}
-
-    </div>
-
-  `;
-
-
-  document.getElementById("cartCount").textContent =
-    count;
-
-
-  document
-    .getElementById("cartButton")
+  document.getElementById("cartButton")
     .classList
     .add("show");
 
 }
 
-
-/* =========================
-   ثبت سفارش
-   ========================= */
 
 function submitOrder(){
 
@@ -988,20 +868,14 @@ function submitOrder(){
 
 
   alert(
-    "سفارش شما ثبت شد.\n" +
-    "میز: " +
-    table +
-    "\n\n" +
-    "در نسخه واقعی می‌توان این بخش را " +
-    "به سرور و سیستم صندوق متصل کرد."
+    "سفارش شما ثبت شد.\n"+
+    "میز: "+table+
+    "\n\n"+
+    "در نسخه واقعی می‌توان این بخش را به سرور و سیستم صندوق متصل کرد."
   );
 
 }
 
-
-/* =========================
-   اسکن QR
-   ========================= */
 
 let scanner;
 
@@ -1014,7 +888,7 @@ async function openScanner(){
     .add("show");
 
 
-  if(scanner) return;
+  if(scanner)return;
 
 
   scanner =
@@ -1037,70 +911,62 @@ async function openScanner(){
         }
       },
 
-      text => {
+      text=>{
 
         closeScanner();
 
 
         try{
 
-          const u = new URL(text);
-
+          const u=
+            new URL(text);
 
           if(
-            u.origin === location.origin
+            u.origin===
+            location.origin
           ){
 
-            location.href = u.href;
+            location.href=
+              u.href;
 
           }else{
 
-            location.href = text;
+            location.href=
+              text;
 
           }
 
         }catch(e){
 
           alert(
-            "کد اسکن شد: " +
-            text
+            "کد اسکن شد: "+text
           );
 
         }
 
       },
 
-      () => {}
+      ()=>{}
 
     );
 
   }catch(e){
 
-    document.getElementById("reader").innerHTML = `
-
-      <p
-        style="
-          color:white;
-          padding:30px
-        ">
-
-        دسترسی دوربین ممکن نیست.
-
-        در مرورگر اجازه Camera را فعال کنید
-        یا لینک QR را مستقیماً باز کنید.
-
-      </p>
-
-    `;
+    document
+      .getElementById("reader")
+      .innerHTML=
+      `
+        <p style="color:white;padding:30px">
+          دسترسی دوربین ممکن نیست.
+          در مرورگر اجازه Camera را فعال کنید
+          یا لینک QR را مستقیماً باز کنید.
+        </p>
+      `;
 
   }
 
 }
 
-
-/* =========================
-   بستن اسکنر
-   ========================= */
 
 async function closeScanner(){
 
@@ -1113,34 +979,23 @@ async function closeScanner(){
   if(scanner){
 
     try{
-
       await scanner.stop();
-
     }catch(e){}
-
 
     try{
-
       scanner.clear();
-
     }catch(e){}
 
-
-    scanner = null;
-
+    scanner=null;
 
     document
       .getElementById("reader")
-      .innerHTML = "";
+      .innerHTML="";
 
   }
 
 }
 
-
-/* =========================
-   شماره میز از URL
-   ========================= */
 
 const table =
   new URLSearchParams(location.search)
@@ -1151,16 +1006,11 @@ if(table){
 
   document
     .getElementById("tableLabel")
-    .textContent =
-      "منوی دیجیتال • میز " +
-      table;
+    .textContent=
+      "منوی دیجیتال • میز "+table;
 
 }
 
-
-/* =========================
-   اجرای اولیه
-   ========================= */
 
 render();
 
